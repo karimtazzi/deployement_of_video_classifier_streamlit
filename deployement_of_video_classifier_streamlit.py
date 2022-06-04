@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 18 19:15:01 2021
-
-@author: siddhardhan
-"""
 
 import numpy as np
 import pickle
@@ -50,33 +37,16 @@ def sequence_prediction(path):
     return frames
     
 def main():
-    
-    
     # giving a title
     st.title('Video Classifier Web App')
-    
-    
-    # getting the input data from the user
-    
-    
-   video_file = open('C:\Users\Hinnovis\Downloads\Video1', 'rb') #enter the filename with filepath
-   video_1 = video_file.read() #reading the file
-   st.video(video_1) #displaying the video
-    
-    
-    
+    video_file = open('C:\Users\Hinnovis\Downloads\Video1', 'rb') #enter the filename with filepath
+    video_1 = video_file.read() #reading the file
+    st.video(video_1) #displaying the video
     # creating a button for Prediction
-    
     if st.button('Diabetes Test Result'):
-       test_frames = sequence_prediction(test_video)
-        
-        
+       test_frames = sequence_prediction(video_1)    
     st.success(test_frames)
-    
-    
-    
-    
-    
+      
 if __name__ == '__main__':
     main()
     
