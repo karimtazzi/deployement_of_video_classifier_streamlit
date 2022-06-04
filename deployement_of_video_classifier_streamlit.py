@@ -30,7 +30,7 @@ def sequence_prediction(path):
 
     frames = load_video(os.path.join("test", path))
     frame_features, frame_mask = prepare_single_video(frames)
-    probabilities = sequence_model.predict([frame_features, frame_mask])[0]
+    probabilities = loaded_model.predict([frame_features, frame_mask])[0]
 
     for i in np.argsort(probabilities)[::-1]:
         print(f"  {class_vocab[i]}: {probabilities[i] * 100:5.2f}%")
@@ -39,12 +39,13 @@ def sequence_prediction(path):
 def main():
     # giving a title
     st.title('Video Classifier Web App')
-    video_file = open('C:\Users\Hinnovis\Downloads\Video1', 'rb') #enter the filename with filepath
+    path='C:\Users\Hinnovis\Downloads\Video1'
+    video_file = open(path, 'rb') #enter the filename with filepath
     video_1 = video_file.read() #reading the file
     st.video(video_1) #displaying the video
     # creating a button for Prediction
     if st.button('Diabetes Test Result'):
-       test_frames = sequence_prediction(video_1)    
+       test_frames = sequence_prediction(path)    
     st.success(test_frames)
       
 if __name__ == '__main__':
